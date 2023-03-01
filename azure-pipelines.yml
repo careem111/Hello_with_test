@@ -38,7 +38,7 @@ steps:
   inputs:
     command: build
     dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-    buildContext: **
+    buildContext: '**'
     repository: $(AWS_ECR_IMAGE_URI)
 
 
