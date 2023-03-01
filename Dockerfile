@@ -1,2 +1,3 @@
 FROM dpthub/edtomcatbase
-COPY $(System.DefaultWorkingDirectory)/**/*.war, /opt/tomcat/webapps/
+WORKDIR /home/vsts/work/1/s/webapp/target/
+COPY *.war /opt/tomcat/webapps/
