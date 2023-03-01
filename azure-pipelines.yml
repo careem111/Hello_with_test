@@ -36,7 +36,7 @@ steps:
     command: build
     dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     buildContext: '$(Build.SourcesDirectory)'
-    repository: $(AWS_ECR_IMAGE_URI)
+
 
 - task: ECRPushImage@1
   inputs:
