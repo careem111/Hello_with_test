@@ -45,5 +45,5 @@ steps:
     imageSource: 'imagename'
     sourceImageName: $(AWS_ECR_IMAGE_URI)
     sourceImageTag: $(Build.BuildId)
-    pushTag: latest
+    pushTag: $(Build.BuildId)
     repositoryName: $(AWS_ECR_REPO_NAME)
