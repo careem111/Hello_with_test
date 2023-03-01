@@ -29,3 +29,21 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'Hello_war'
     publishLocation: 'Container'
+    
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    command: build
+    dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+    buildContext: '$(Build.SourcesDirectory)'
+    repository: $(AWS_ECR_IMAGE_URI)
+
+- task: ECRPushImage@1
+  inputs:
+    awsCredentials: 'aws-ecr'
+    regionName: $(AWS_REGION)
+    imageSource: 'imagename'
+    sourceImageName: $(AWS_ECR_IMAGE_URI)
+    sourceImageTag: $(Build.BuildId)
+    pushTag: latest
+    repositoryName: $(AWS_ECR_REPO_NAME)
