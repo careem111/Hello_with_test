@@ -1,0 +1,20 @@
+{
+  "family": "helloworldtask",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "ecsTaskExecutionRole",
+  "containerDefinitions": [{
+    "name": "helloworld-app",
+    "image": "897560440266.dkr.ecr.us-west-2.amazonaws.com/krm-test:#{Build.BuildId}#",
+    "portMappings": [{
+      "containerPort": 8080,
+      "hostPort": 8080,
+      "protocol": "tcp"
+    }],
+    "essential": true
+  }],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "2048"
+}
